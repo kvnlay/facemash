@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments
 
-  has_many :friend_requests, dependent: :destroy
-  has_many :pending_friends, through: :friend_requests, source: :requested
+#   has_many :friend_requests, dependent: :destroy
+#   has_many :pending_friends, through: :friend_requests, source: :requested
 
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships, class_name: 'User'
