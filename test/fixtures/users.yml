@@ -2,3 +2,8 @@ musa:
   name: Musa Jabbaaru
   email: musa@example.com
   # password: password
+
+kingsley:
+  name: Kingsley Omotayo
+  email: kingsley@example.com
+  # password: password
