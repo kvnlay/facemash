@@ -3,7 +3,7 @@ require 'test_helper'
 class CommentTest < ActiveSupport::TestCase
   def setup
     @user = users(:musa)
-    @post = posts(:sample_post)
+    @post = posts(:sample_post1)
     @comment = Comment.new(content: 'Lorem ipsum', user_id: @user.id,\
                            post_id: @post.id)
   end
