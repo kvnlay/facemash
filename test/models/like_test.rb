@@ -20,4 +20,7 @@ class LikeTest < ActiveSupport::TestCase
     @like.post_id = nil
     assert_not @like.valid?
   end
+
+  should belong_to(:user)
+  should belong_to(:post)
 end

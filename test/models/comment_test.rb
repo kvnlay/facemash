@@ -31,4 +31,7 @@ class CommentTest < ActiveSupport::TestCase
     @comment.content = 'a' * 61
     assert_not @comment.valid?
   end
+
+  should belong_to(:user)
+  should belong_to(:post)
 end

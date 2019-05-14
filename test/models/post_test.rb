@@ -24,4 +24,8 @@ class PostTest < ActiveSupport::TestCase
     @post.body = 'a' * 201
     assert_not @post.valid?
   end
+
+  should belong_to(:user)
+  should have_many(:comments)
+  should have_many(:likes)
 end
