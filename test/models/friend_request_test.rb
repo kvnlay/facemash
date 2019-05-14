@@ -21,4 +21,9 @@ class FriendRequestTest < ActiveSupport::TestCase
     @friend_request.requested = nil
     assert_not @friend_request.valid?
   end
+
+  should belong_to(:requester)
+    .class_name('User')
+  should belong_to(:requested)
+    .class_name('User')
 end

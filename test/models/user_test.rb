@@ -65,4 +65,17 @@ class UserTest < ActiveSupport::TestCase
     @user.password = @user.password_confirmation = 'a' * 5
     assert_not @user.valid?
   end
+
+  should have_many(:friendships)
+  should have_many(:friends)
+    .through(:friendships)
+    .class_name('User')
+  should have_many(:sent_requests)
+    .with_foreign_key('requester_id')
+    .class_name('FriendRequest')
+    .dependent(:destroy)
+  should have_many(:recieved_requests)
+    .with_foreign_key('requested_id')
+    .class_name('FriendRequest')
+    .dependent(:destroy)
 end

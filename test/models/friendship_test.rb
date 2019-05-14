@@ -20,4 +20,19 @@ class FriendshipTest < ActiveSupport::TestCase
     @friendship.friend_id = nil
     assert_not @friendship.valid?
   end
+
+  test 'friendship should be mutual' do
+    @user.friendships.create(friend_id: @friend.id)
+    assert @friend.friends.include? @user
+  end
+
+  test 'Friendship destroy should be mutual' do
+    @user.friendships.create(friend_id: @friend.id)
+    @user.friends.find_by(name: 'Kingsley Omotayo').destroy
+    assert @friend.friends.empty?
+  end
+
+  should belong_to(:user)
+  should belong_to(:friend)
+    .class_name('User')
 end
