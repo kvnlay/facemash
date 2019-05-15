@@ -10,11 +10,6 @@ class PostTest < ActiveSupport::TestCase
     assert @post.valid?
   end
 
-  test 'user id should be present' do
-    @post.user_id = nil
-    assert_not @post.valid?
-  end
-
   test 'body should be present' do
     @post.body = '   '
     assert_not @post.valid?
@@ -27,5 +22,7 @@ class PostTest < ActiveSupport::TestCase
 
   should belong_to(:user)
   should have_many(:comments)
+    .dependent(:destroy)
   should have_many(:likes)
+    .dependent(:destroy)
 end

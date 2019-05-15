@@ -11,16 +11,6 @@ class FriendshipTest < ActiveSupport::TestCase
     assert @friendship.valid?
   end
 
-  test 'user id should be present' do
-    @friendship.user_id = nil
-    assert_not @friendship.valid?
-  end
-
-  test 'friend id should be present' do
-    @friendship.friend_id = nil
-    assert_not @friendship.valid?
-  end
-
   test 'friendship should be mutual' do
     @user.friendships.create(friend_id: @friend.id)
     assert @friend.friends.include? @user
