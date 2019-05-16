@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'friends/index'
+  get 'friends/destroy'
   get 'friend_requests/index'
   get 'friend_requests/create'
   get 'friend_requests/update'
