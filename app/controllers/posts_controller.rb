@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     friends = current_user.friends.pluck(:friend_id)
+    friends << current_user.id
     @posts = Post.all.where(user_id: friends).includes(:user, :comments, :likes)
   end
 
@@ -35,9 +36,5 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:posts).permit(:body)
-  end
-
-  def init_comment
-    @comment = Comment.new
   end
 end

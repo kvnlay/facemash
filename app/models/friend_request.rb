@@ -13,7 +13,7 @@ class FriendRequest < ApplicationRecord
 
   private
   def not_friends
-    errors.add(:requested, 'is already added') if requester.friends.include? requested
+    errors.add(:requested, 'is already added') if requester.friends.include?(requested)
   end
 
   def not_pending
