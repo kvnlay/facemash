@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
   def init_comment
     @comment = Comment.new
   end
+
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
 end
