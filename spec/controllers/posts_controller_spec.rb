@@ -1,18 +1,7 @@
 require 'rails_helper'
 
-FactoryBot.define do
-    factory :user do
-    sequence(:email) { |n| "user#{n}@example.com" }
-    sequence(:name) { |n| "user#{n}" }
-    sequence(:password) { |n| "1233456#{n}" }
-    sequence(:password_confirmation) { |n| "1233456#{n}" }
-    # password_confirmation '123456'
-    # confirmed_at Date.today
-    end
-end
-
 RSpec.describe PostsController, type: :controller do
-  describe 'Post controller request specs' do
+  describe 'Posts controller request specs' do
     login_user
 
     context 'GET #index' do
@@ -22,6 +11,22 @@ RSpec.describe PostsController, type: :controller do
         expect(response).to render_template :index
       end
     end
-  end
 
+    context 'GET #show' do
+      it 'should success and render to show page' do
+        get :show
+        expect(response).to have_http_status(200)
+        expect(response).to render_template :show
+      end
+    end
+
+    context 'POST #create' do
+      it 'create a new post' do
+        post = create(:post)
+        get :show, id: post
+        expect(response).to be_successful
+        # expect(response.body).to include("Test post")
+      end
+    end
+  end
 end
