@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :init_comment, only[:index, :show]
+  before_action :init_comment, only: [:index, :show]
 
   def index
     friends = current_user.friends.pluck(:friend_id)

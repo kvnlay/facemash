@@ -3,10 +3,11 @@ require 'rails_helper'
 FactoryBot.define do
     factory :user do
     sequence(:email) { |n| "user#{n}@example.com" }
-    name 'TestName'
-    password '123456'
-    password_confirmation '123456'
-    confirmed_at Date.today
+    sequence(:name) { |n| "user#{n}" }
+    sequence(:password) { |n| "1233456#{n}" }
+    sequence(:password_confirmation) { |n| "1233456#{n}" }
+    # password_confirmation '123456'
+    # confirmed_at Date.today
     end
 end
 
