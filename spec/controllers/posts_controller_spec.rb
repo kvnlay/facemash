@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe PostsController, type: :controller do
   describe 'Posts controller request specs' do
@@ -23,9 +24,9 @@ RSpec.describe PostsController, type: :controller do
     context 'POST #create' do
       it 'create a new post' do
         post = create(:post)
-        get :show, id: post
+        get :show
         expect(response).to be_successful
-        # expect(response.body).to include("Test post")
+        # expect(response).to include("Test post")
       end
     end
   end
