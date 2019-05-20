@@ -28,19 +28,19 @@ RSpec.describe FriendRequestsController, type: :controller do
       end
     end
 
-    context 'POST #update' do
-      it 'returns a successful response' do
-        get :index
-        # expect(response).to be_successful
-        expect(response).to have_http_status(200)
-        expect(response).to render_template :index
-      end
-      it 'updates a friend_request' do
-        friend_request = create(:friend_request)
-        friend_request.update(friend_request.id)
-        expect(FriendRequest.ids).not_to include(friend_request.id)
-      end
-    end
+    # context 'POST #update' do
+    #   it 'returns a successful response' do
+    #     get :index
+    #     # expect(response).to be_successful
+    #     expect(response).to have_http_status(200)
+    #     expect(response).to render_template :index
+    #   end
+    #   it 'updates a friend_request' do
+    #     friend_request = create(:friend_request)
+    #     friend_request.update(friend_request.id)
+    #     expect(FriendRequest.ids).not_to include(friend_request.id)
+    #   end
+    # end
 
     context 'POST #destroy' do
       it 'returns a successful response' do
