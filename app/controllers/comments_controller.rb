@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :init_comment, only[:new]
-  before_action :set_post, only[:create, :destroy]
+  before_action :init_comment, only: [:new]
+  before_action :set_post, only: [:create, :destroy]
 
   def new; end
 
