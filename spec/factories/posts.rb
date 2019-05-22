@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :post do
-    body { 'Fake post' }
     user
+    body { 'Fake post'}
   end
 end

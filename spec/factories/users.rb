@@ -4,5 +4,10 @@ FactoryBot.define do
     email { Faker::Internet.email}
     password { 'password' }
     password_confirmation { 'password' }
+
+    factory :friend do
+      name { 'Kingsley Omotayo' }
+      email { Faker::Internet.email}
+    end
   end
 end

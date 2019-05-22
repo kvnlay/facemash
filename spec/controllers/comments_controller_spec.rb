@@ -11,11 +11,20 @@ RSpec.describe CommentsController, type: :controller do
     end
   end
 
-  describe "POST #create" do
-    it "returns http success" do
-      comment = create(:comment)
-      # expect(post.comments.count).to eq(1)
-      expect(User.ids).to include(comment.user_id)
+  describe 'post#create' do
+    it 'saves to the database' do
+      commenter = create(:user)
+      user_post = create(:post)
+      comment = create(:comment, post_id: user_post.id, user_id: commenter.id)
+      expect do
+        post :create, params: {
+          comment: {
+            user_id: commenter.id,
+            content: 'Fake comment'
+          },
+          comment_id: comment.id
+        }
+      end.to change(Comment, :count).by(1)
     end
   end
 
