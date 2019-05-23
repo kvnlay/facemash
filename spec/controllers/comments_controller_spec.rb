@@ -5,9 +5,9 @@ RSpec.describe CommentsController, type: :controller do
 
   describe "GET #new" do
     it "returns http success" do
-      get new_post_comment_path
+      get :new
       expect(assigns(:comment)).to be_a_new(Comment)
-      # expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:success)
     end
   end
 

@@ -16,6 +16,7 @@ RSpec.describe Friendship, type: :model do
   end
 
   it 'destroy should be mutual' do
+    user.friendships.create(friend_id: friend.id)
     user.friends.find_by(id: friend.id).destroy
     expect(friend.friends).to eq([])
   end

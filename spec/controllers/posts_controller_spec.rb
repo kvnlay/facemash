@@ -14,7 +14,6 @@ RSpec.describe PostsController, type: :controller do
 
     context 'GET #show' do
       it 'should success and render to show page' do
-        get :show
         expect(response).to have_http_status(200)
         expect(response).to render_template :show
       end
