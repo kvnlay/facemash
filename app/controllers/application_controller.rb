@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
     @comment = Comment.new
   end
 
+  def after_sign_in_path_for(resource)
+    request.env['omniauth.origin'] || root_path
+  end
+
   def set_post
     @post = Post.find(params[:post_id])
   end

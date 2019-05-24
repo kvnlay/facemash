@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'friend_requests/create'
   get 'friend_requests/update'
   get 'friend_requests/destroy'
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users, only: [:index, :show]
   resources :posts, only: [:new, :destroy] do
     resources :comments, only: [:new, :show, :create, :destroy]
