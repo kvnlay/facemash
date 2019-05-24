@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_05_24_115057) do
-=======
 ActiveRecord::Schema.define(version: 2019_05_23_102807) do
->>>>>>> 1d3c95422dc526a3dc491f10429dde27cdf322a7
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_05_23_102807) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["added_id"], name: "index_friendships_on_added_id"
+    t.index ["adder_id", "added_id"], name: "index_friendships_on_adder_id_and_added_id", unique: true
     t.index ["adder_id"], name: "index_friendships_on_adder_id"
   end
 
