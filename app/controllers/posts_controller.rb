@@ -1,14 +1,15 @@
 class PostsController < ApplicationController
-  before_action :init_comment, only: [:index, :show]
 
   def index
     friends = current_user.friends.pluck(:friend_id)
     friends << current_user.id
-    @posts = Post.all.where(user_id: friends).includes(:user, :comments, :likes)
+    @comment = Comment.new
+    @posts = Post.all.where(user_id: friends).with_comments_and_likes
   end
 
   def show
-    @post = Post.includes(:user, :comments, :likes)
+    @post = Post.with_comments_and_likes
+    @comment = Comment.new
   end
 
   def new

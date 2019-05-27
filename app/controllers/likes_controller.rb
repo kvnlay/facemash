@@ -2,15 +2,19 @@ class LikesController < ApplicationController
   before_action :set_post
 
   def create
-    if already_liked?
-      @like.destroy
+    @like = @post.likes.build(user_id: current_user.id)
+    if @like.save
+      flash[:success] = 'You\'ve liked this post'
+      redirect_to post_path(@post)
     else
-      @post.likes.create(user_id: current_user.id)
+      flash.now[:error] = 'You cannot like this post'
+      render :post
     end
-    redirect_to post_path(@post)
   end
 
-  def already_liked?
-    Like.where(user_id: current_user.id, post_id: params[:post_id]).exists?
+  def destroy
+    like = Like.find_by(id: params[:id])
+    like&.destroy
+    redirect_back(fallback_location: root_path)
   end
 end

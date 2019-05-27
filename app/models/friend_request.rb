@@ -7,7 +7,7 @@ class FriendRequest < ApplicationRecord
   validate :not_self
 
   def accept
-    requester.friends << requested
+    requester.sent_friends << requested
     destroy
   end
 

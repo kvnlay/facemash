@@ -1,16 +1,20 @@
 class FriendshipsController < ApplicationController
-  before_action :set_friend, only: :destroy
+  # before_action :set_friend, only: :destroy
+  
   def index
+    @user = User.find_by(params[:user_id])
     @friends = current_user.friends
   end
 
   def destroy
-    current_user.remove_friend(@friend)
+    @friendship = Friendship.find_by(id: params[:id])
+    @friendship.destroy
+    redirect_back(fallback_location: user_path)
   end
 
-  private
+  # private
 
-  def set_friend
-    @friend = current_user.friends.find(params[:id])
-  end
+  # def set_friend
+  #   @friend = current_user.friends.find(params[:id])
+  # end
 end
