@@ -1,10 +1,12 @@
 class FriendshipsController < ApplicationController
   # before_action :set_friend, only: :destroy
-  
-  def index
-    @user = User.find_by(params[:user_id])
-    @friends = current_user.friends
-  end
+
+  # wrong implementation
+
+  # def index
+  #   @user = User.find_by(params[:user_id])
+  #   @friends = current_user.friends
+  # end
 
   def destroy
     @friendship = Friendship.find_by(id: params[:id])
