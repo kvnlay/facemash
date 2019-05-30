@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Friendship, type: :model do
   subject { build(:friendship) }
   let(:user) { create(:user) }
-  let(:friend) { create(:user) }
+  let(:user2) { create(:user) }
   let(:friends) { create(:friendship) }
 
   it 'should be valid' do
@@ -11,19 +11,18 @@ RSpec.describe Friendship, type: :model do
   end
 
   it 'should be mutual' do
-    user.friendships.create(friend_id: friend.id)
-    expect(friend.friends[0]).to eq(user)
+    user.sent_friendships.create(added_id: user2.id)
+    expect(user2.friends[0]).to eq(user)
   end
 
   it 'destroy should be mutual' do
-    user.friendships.create(friend_id: friend.id)
-    user.friends.find_by(id: friend.id).destroy
-    expect(friend.friends).to eq([])
+    user.sent_friendships.create(added_id: user2.id)
+    user.sent_friends.find_by(id: user2.id).destroy
+    expect(user2.friends).to eq([])
   end
 
   it do
-    should belong_to(:user)
-    should belong_to(:friend)
-      .class_name('User')
+    should belong_to(:sent_friend).class_name('User')
+    should belong_to(:received_friend).class_name('User')
   end
 end

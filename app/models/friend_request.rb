@@ -24,4 +24,8 @@ class FriendRequest < ApplicationRecord
   def not_self
     errors.add(:requested, 'Can\'t be equal to requester') if requester == requested
   end
+
+  def find_request(user, friend)
+    
+  end
 end

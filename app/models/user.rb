@@ -34,8 +34,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-  validates :email, presence: true, length: { maximum: 255 },
+  validates :password, length: { minimum: 6 }, allow_nil: true
+  validates :email, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
@@ -51,6 +51,6 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.email
     user.password = Devise.friendly_token[0,20]
-    end      
+    end
   end
 end

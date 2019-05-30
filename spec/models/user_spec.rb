@@ -24,7 +24,6 @@ RSpec.describe User, type: :model do
 
     context 'length' do
       it do should validate_length_of(:name) .is_at_most(50) end
-      it do should validate_length_of(:email) .is_at_most(255) end
     end
 
     context 'format' do
@@ -39,8 +38,28 @@ RSpec.describe User, type: :model do
     it do should have_many(:posts).dependent(:destroy) end
     it do should have_many(:likes).dependent(:destroy) end
     it do should have_many(:comments).dependent(:destroy) end
-    it do should have_many(:friendships).dependent(:destroy) end
-    it do should have_many(:friends).through(:friendships).class_name(:User) end
+    it do 
+      should have_many(:sent_friendships)
+      .class_name(:Friendship)
+      .with_foreign_key(:adder_id)
+      .dependent(:destroy) 
+    end
+    it do 
+      should have_many(:received_friendships)
+      .class_name(:Friendship)
+      .with_foreign_key(:added_id)
+      .dependent(:destroy) 
+    end
+    it do
+      should have_many(:sent_friends)
+        .through(:received_friendships)
+        .source(:sent_friend)
+    end
+    it do
+      should have_many(:received_friends)
+        .through(:sent_friendships)
+        .source(:received_friend)
+    end
     it do
       should have_many(:received_requests)
         .with_foreign_key(:requested_id)
