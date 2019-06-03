@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Friendship, type: :model do
-  subject { build(:friendship) }
+  let(:subject) { build(:friendship) }
   let(:user) { create(:user) }
   let(:user2) { create(:user) }
   let(:friends) { create(:friendship) }
@@ -21,7 +21,7 @@ RSpec.describe Friendship, type: :model do
     context 'destroy' do
       it do
         user.sent_friendships.create(added_id: user2.id)
-        user.sent_friends.find_by(id: user2.id).destroy
+        user.sent_friendships.find_by(added_id: user2.id).destroy
         expect(user2.friends).to eq([])
       end
     end
@@ -32,5 +32,10 @@ RSpec.describe Friendship, type: :model do
       should belong_to(:sent_friend).class_name('User')
       should belong_to(:received_friend).class_name('User')
     end
+  end
+
+  context 'callbacks' do
+    let(:friendship) { create(:friendship) }
+    it { expect(friendship).to callback(:delete_request).after(:create) }
   end
 end

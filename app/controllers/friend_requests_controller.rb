@@ -1,10 +1,5 @@
 class FriendRequestsController < ApplicationController
-  before_action :set_friend_request, except: [:index, :create]
-
-  def index
-    @incoming = current_user.requesters
-    @outgoing = current_user.requesteds
-  end
+  before_action :set_friend_request, except: [:create]
 
   def create
     friend = User.find(params[:requested_id])
@@ -15,10 +10,6 @@ class FriendRequestsController < ApplicationController
       flash[:danger] = 'Error sending friend request'
     end
     redirect_back(fallback_location: root_path)
-  end
-
-  def update
-    @friend_request.accept
   end
 
   def destroy

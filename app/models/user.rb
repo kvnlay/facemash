@@ -39,9 +39,9 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
-  # def remove_friend(friend)
-  #   current_user.friend.destroy(friend)
-  # end
+  def accept_friend(friend)
+    received_friendships.build(adder_id: friend)
+  end
 
   def friends
     sent_friends + received_friends
@@ -49,8 +49,8 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-    user.email = auth.info.email
-    user.password = Devise.friendly_token[0,20]
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
     end
   end
 end

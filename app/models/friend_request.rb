@@ -6,12 +6,8 @@ class FriendRequest < ApplicationRecord
   validate :not_pending
   validate :not_self
 
-  def accept
-    requester.sent_friends << requested
-    destroy
-  end
-
   private
+
   def not_friends
     errors.add(:requested, 'is already added') if requester.friends.include?(requested)
   end
@@ -23,9 +19,5 @@ class FriendRequest < ApplicationRecord
 
   def not_self
     errors.add(:requested, 'Can\'t be equal to requester') if requester == requested
-  end
-
-  def find_request(user, friend)
-    
   end
 end

@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   subject { build(:user) }
 
-  context 'validations' do
+  describe 'validations' do
     before { create(:user) }
 
     context 'attributes' do
@@ -32,7 +32,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context 'associations' do
+  describe 'associations' do
     it { should have_many(:posts).dependent(:destroy) }
     it { should have_many(:likes).dependent(:destroy) }
     it { should have_many(:comments).dependent(:destroy) }
@@ -78,6 +78,35 @@ RSpec.describe User, type: :model do
       should have_many(:requesteds)
         .through(:sent_requests)
         .source(:requested)
+    end
+  end
+
+  describe 'instance methods' do
+    let(:person) { create(:user) }
+    let(:friend) { create(:user) }
+
+    context 'instance responds to its methods' do
+      it { expect(person).to respond_to(:friends) }
+      it { expect(person).to respond_to(:accept_friend) }
+    end
+
+    context "#friends" do
+      it "List all users friends" do
+        expect(person.friends).not_to include(friend)
+        expect(friend.friends).not_to include(person)
+        Friendship.create(adder_id: person.id, added_id: friend.id)
+        person.reload
+        friend.reload
+        expect(person.friends).to eq([friend])
+        expect(friend.friends).to eq([person])
+      end
+    end
+
+    context '#accept_friend' do
+      it 'accepts user as friend' do
+        person.accept_friend(friend)
+        expect(friend.friends).to eq([person])
+      end
     end
   end
 end
