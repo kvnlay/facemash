@@ -101,12 +101,5 @@ RSpec.describe User, type: :model do
         expect(friend.friends).to eq([person])
       end
     end
-
-    context '#accept_friend' do
-      it 'accepts user as friend' do
-        person.accept_friend(friend)
-        expect(friend.friends).to eq([person])
-      end
-    end
   end
 end

@@ -53,4 +53,12 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
     end
   end
+
+  def all_friend_posts
+    friend_ids = [id]
+    friend_ids += friends.pluck(:id) unless friends.nil?
+    friend_ids.uniq
+    Post.where(user_id: friend_ids).order(created_at: :desc)
+        .includes(:user, :comments, :likes)
+  end
 end

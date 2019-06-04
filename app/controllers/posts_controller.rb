@@ -1,15 +1,15 @@
 class PostsController < ApplicationController
 
   def index
-    # friends = current_user.friends.pluck(:friend_id)
-    # friends << current_user.id
+    @post = Post.new
     @comment = Comment.new
-    @posts = Post.all.user_friends(current_user).with_comments_and_likes
+    @posts = current_user.all_friend_posts
   end
 
   def show
     @post = Post.with_comments_and_likes
     @comment = Comment.new
+    @post = Post.new
   end
 
   def new
