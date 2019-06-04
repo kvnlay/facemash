@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Friendship, type: :model do
-  # subject { create(:friendship) }
   let(:user) { create(:user) }
   let(:user2) { create(:user) }
   let(:friendship) { create(:friendship) }

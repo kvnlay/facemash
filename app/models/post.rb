@@ -5,5 +5,12 @@ class Post < ApplicationRecord
 
   validates :body, presence: true, length: { maximum: 200 }
 
-  scope :with_comments_and_likes, -> { includes(:user, :comments, :likes) }
+  scope :with_comments_and_likes,
+        lambda {
+          includes(
+            :user,
+            :likes,
+            comments: [:user]
+          )
+        }
 end
