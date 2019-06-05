@@ -34,14 +34,10 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
-  validates :password, length: { minimum: 6 }, allow_nil: true
+  validates :password, length: { minimum: 6 }
   validates :email, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-
-  def accept_friend(friend)
-    received_friendships.build(adder_id: friend)
-  end
 
   def friends
     sent_friends + received_friends

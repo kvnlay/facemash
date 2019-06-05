@@ -3,4 +3,7 @@ FactoryBot.define do
     requester
     requested
   end
+
+  factory :invalid_friend_request do
+  end
 end

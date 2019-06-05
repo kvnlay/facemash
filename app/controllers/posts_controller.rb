@@ -2,14 +2,11 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @comment = Comment.new
     @posts = current_user.all_friend_posts
   end
 
   def show
     @post = Post.with_comments_and_likes.find(params[:id])
-    @comment = Comment.new
-    @post = Post.new
   end
 
   def new
@@ -28,6 +25,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find_by(id: params[:id])
     @post.destroy
     flash[:success] = 'Post deleted'
     redirect_to root_url

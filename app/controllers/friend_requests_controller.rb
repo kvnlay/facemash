@@ -1,9 +1,8 @@
 class FriendRequestsController < ApplicationController
-  before_action :set_friend_request, except: [:create]
 
   def create
-    friend = User.find(params[:requested_id])
-    @friend_request = FriendRequest.new(requester_id: current_user.id, requested_id: friend.id)
+    requested = User.find(params[:requested_id])
+    @friend_request = current_user.sent_requests.build(requested: requested)
     if @friend_request.save
       flash[:success] = 'Friend request has been sent'
     else
@@ -13,12 +12,7 @@ class FriendRequestsController < ApplicationController
   end
 
   def destroy
-    @friend_request.destroy
-  end
-
-  private
-
-  def set_friend_request
     @friend_request = FriendRequest.find(params[:id])
+    @friend_request.destroy
   end
 end

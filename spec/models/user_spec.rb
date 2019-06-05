@@ -16,10 +16,6 @@ RSpec.describe User, type: :model do
       it { should validate_presence_of :name }
     end
 
-    context 'uniqueness' do
-      it { should validate_uniqueness_of :email }
-    end
-
     context 'length' do
       it { should validate_length_of(:name) .is_at_most(50) }
     end
@@ -87,7 +83,7 @@ RSpec.describe User, type: :model do
 
     context 'instance responds to its methods' do
       it { expect(person).to respond_to(:friends) }
-      it { expect(person).to respond_to(:accept_friend) }
+      it { expect(person).to respond_to(:all_friend_posts) }
     end
 
     context "#friends" do
@@ -99,6 +95,25 @@ RSpec.describe User, type: :model do
         friend.reload
         expect(person.friends).to eq([friend])
         expect(friend.friends).to eq([person])
+      end
+    end
+
+    context "#all_friend_posts" do
+      let(:not_friend) { create(:user) }
+      it "List all user friends posts including users" do
+        Friendship.create(adder_id: person.id, added_id: friend.id)
+        not_friend_post = not_friend.posts.create(body: 'not friend post')
+        person_post = person.posts.create(body: 'test post')
+        friend_post = friend.posts.create(body: 'friend post')
+        person.reload
+        friend.reload
+        expect(person.all_friend_posts).to include(friend_post)
+        expect(person.all_friend_posts).not_to include(not_friend_post)
+        expect(friend.all_friend_posts).to include(person_post)
+        expect(friend.all_friend_posts).not_to include(not_friend_post)
+        Friendship.create(adder_id: friend.id, added_id: not_friend.id)
+        friend.reload
+        expect(friend.all_friend_posts).to include(not_friend_post, person_post)
       end
     end
   end
