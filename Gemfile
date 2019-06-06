@@ -10,12 +10,9 @@ gem 'faker'
 gem 'pg'
 gem 'rails_12factor', group: :production
 gem 'dotenv-rails'
-<<<<<<< HEAD
-=======
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'rails-controller-testing'
->>>>>>> controllers
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

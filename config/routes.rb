@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-=======
   root to: 'users#index'
   resources :friendships, only: [:create, :destroy]
   resources :friend_requests, only: [:create, :destroy]
@@ -10,6 +8,5 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:new, :show, :create, :destroy]
   end
->>>>>>> controllers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
