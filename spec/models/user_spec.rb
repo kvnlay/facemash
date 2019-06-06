@@ -6,7 +6,6 @@ RSpec.describe User, type: :model do
   subject { build(:user) }
 
   describe 'validations' do
-    before { create(:user) }
 
     context 'attributes' do
       it { expect(subject).to be_valid }
@@ -80,11 +79,6 @@ RSpec.describe User, type: :model do
   describe 'instance methods' do
     let(:person) { create(:user) }
     let(:friend) { create(:user) }
-
-    context 'instance responds to its methods' do
-      it { expect(person).to respond_to(:friends) }
-      it { expect(person).to respond_to(:all_friend_posts) }
-    end
 
     context "#friends" do
       it "List all users friends" do
