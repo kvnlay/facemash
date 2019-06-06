@@ -1,0 +1,18 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+// Custom navbar styles
+
+.navbar-facemash{
+  background-color: #3b5998;
+  border-color: #3b5998;
+  border-radius: 0;
+}
+
+.navbar-header a, .navbar-right li a{
+  color: #ffffff;
+}
+
+.nav > li > a:hover{
+  background-color:  #3b5998;
+}
