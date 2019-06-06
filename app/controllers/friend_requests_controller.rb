@@ -1,0 +1,18 @@
+class FriendRequestsController < ApplicationController
+
+  def create
+    requested = User.find(params[:requested_id])
+    @friend_request = current_user.sent_requests.build(requested: requested)
+    if @friend_request.save
+      flash[:success] = 'Friend request has been sent'
+    else
+      flash[:danger] = 'Error sending friend request'
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
+  def destroy
+    @friend_request = FriendRequest.find(params[:id])
+    @friend_request.destroy
+  end
+end

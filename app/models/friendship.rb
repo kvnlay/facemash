@@ -1,18 +1,17 @@
 class Friendship < ApplicationRecord
-  after_create :create_mutual_relationship
-  after_destroy :destroy_mutual_relationship
+  after_create :delete_request
 
-  belongs_to :user
-  belongs_to :friend, class_name: 'User'
+  belongs_to :sent_friend, class_name: 'User', foreign_key: 'adder_id'
+  belongs_to :received_friend, class_name: 'User', foreign_key: 'added_id'
+
+  validates :adder_id, uniqueness: { scope: :added_id }
 
   private
 
-  def create_mutual_relationship
-    Friendship.find_or_create_by(user_id: friend.id, friend_id: user.id)
-  end
+  def delete_request
+    return unless (request = FriendRequest.find_by(requester_id: sent_friend.id,
+                                                  requested_id: received_friend.id))
 
-  def destroy_mutual_relationship
-    friendship = Friendship.find_by(user_id: friend.id, friend_id: user.id)
-    friendship&.destroy
+    request&.destroy
   end
 end

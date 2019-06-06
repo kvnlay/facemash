@@ -1,8 +1,16 @@
 class Post < ApplicationRecord
-validates :user, presence: true
-validates :body, presence: true, length: { maximum: 200 }
-
   belongs_to :user
-  has_many :comments
-  has_many :likes
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+
+  validates :body, presence: true, length: { maximum: 200 }
+
+  scope :with_comments_and_likes,
+        lambda {
+          includes(
+            :user,
+            :likes,
+            comments: [:user]
+          )
+        }
 end
