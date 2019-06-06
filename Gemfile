@@ -13,6 +13,8 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'rails-controller-testing'
+gem 'bootstrap', '~> 4.0.0'
+gem 'autoprefixer-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

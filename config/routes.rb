@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'users#index'
+  root to: 'welcome#index'
   resources :friendships, only: [:create, :destroy]
   resources :friend_requests, only: [:create, :destroy]
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
