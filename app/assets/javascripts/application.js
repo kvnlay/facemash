@@ -16,3 +16,17 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// $(function () {
+
+//     $('.show_btn').click(function () {
+//       $('.hiding').show();
+//       $('.showing').hide();
+//     });
+      
+//     $('.hide_btn').click(function () {
+//       $('.hiding').hide();
+//       $('.showing').show();
+//     });
+      
+//   });

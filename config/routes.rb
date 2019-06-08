@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :friend_requests, only: [:create, :destroy]
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users, only: [:index, :show]
-  resources :posts, only: [:new, :destroy] do
+  resources :likes
+  resources :comments
+  resources :posts, only: [:index, :new, :create, :destroy] do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:new, :show, :create, :destroy]
   end

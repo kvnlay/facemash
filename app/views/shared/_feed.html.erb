@@ -1,0 +1,42 @@
+<% if @posts.any? %>
+  <ol class="posts">
+    <% @posts.each do |post| %>
+      <li>
+        <%= gravatar_for post.user, size: 50 %>
+        <p class="name"><%= link_to post.user.name, post.user %><p>
+
+        <div class="date_del flex_display">
+        <span class="date"><%= post.created_at %></span>
+        <% if post.user %>
+          <%= button_to "delete", post_path(post.id), :method => :delete, :class=>'btn btn-danger del' %>
+        <% end %>
+        </div>
+
+        <div class="content"><%= link_to post.body, post %></div>
+
+        <div class="ico flex_display">
+          <span class="ico_like"><i class="far fa-thumbs-up"></i> <%= post.likes.count %></span>
+          <span class="ico_comment"><i class="far fa-comment-alt"></i> <%= post.comments.count %></span>
+        </div>
+        
+        <div class="like_comment flex_display">
+        <% if post.likes.find_by(user: current_user) %>
+          <%= button_to "Unlike", like_path(post.id), :method => :delete, class: "btn btn-light like" %>
+        <% else %>
+          <%= button_to "Like", post_likes_path(:post_id => post.id), :method => :post, class: "btn btn-primary like" %>
+        <% end %>
+        </div>
+        
+        <%= form_for Comment.new do |f| %>
+          <div class="field">
+            <div class="com">
+              <%= f.submit "Comment", class: "btn btn-light like commen" %>
+              <%= f.text_area :content,  placeholder: "Comment...", class: "comment_input" %>
+              <%= f.hidden_field :post_id, value: post.id%>
+            </div>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
