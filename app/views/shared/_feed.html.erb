@@ -7,7 +7,7 @@
 
         <div class="date_del flex_display">
         <span class="date"><%= post.created_at %></span>
-        <% if post.user %>
+        <% if post.user == current_user %>
           <%= button_to "delete", post_path(post.id), :method => :delete, :class=>'btn btn-danger del' %>
         <% end %>
         </div>
