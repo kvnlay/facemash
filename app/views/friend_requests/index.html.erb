@@ -1,2 +1,10 @@
-<h1>FriendRequests#index</h1>
-<p>Find me in app/views/friend_requests/index.html.erb</p>
+<h1>Friend requests</h1>
+<ul>
+<% if @incoming %>
+  <% @incoming.each do |req| %>
+    <li><%= req %></li>
+  <% end %>
+<% else %>
+
+<% end %>
+</ul>

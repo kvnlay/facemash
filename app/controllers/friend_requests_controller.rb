@@ -1,5 +1,10 @@
 class FriendRequestsController < ApplicationController
 
+  def index
+    @incoming = current_user.received_requests
+    @outgoing = current_user.sent_requests
+  end
+
   def create
     requested = User.find(params[:requested_id])
     @friend_request = current_user.sent_requests.build(requested: requested)

@@ -22,7 +22,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to 'Home', root_path %></li>
             <li><%= link_to 'Profile', current_user %></li>
-            <li><%= link_to 'Friend Requests', friend_requests_path %></li>
+            <li><%= link_to "Notifications(#{request_count})", friend_requests_path %></li>
             <li><%= link_to 'Find friends', users_path %></li>
             <li><%= link_to 'Sign out', destroy_user_session_path, method: "delete" %></li>
           </ul>
