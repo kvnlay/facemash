@@ -2,7 +2,6 @@ class FriendRequestsController < ApplicationController
 
   def index
     @incoming = current_user.received_requests
-    @outgoing = current_user.sent_requests
   end
 
   def create
@@ -18,6 +17,7 @@ class FriendRequestsController < ApplicationController
 
   def destroy
     @friend_request = FriendRequest.find(params[:id])
-    @friend_request.destroy
+    flash[:notice] = @friend_request.destroy ? "Request declined" : "Request couldn't be declined"
+    redirect_back(fallback_location: friend_requests_path)
   end
 end
