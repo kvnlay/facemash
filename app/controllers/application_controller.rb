@@ -7,14 +7,6 @@ class ApplicationController < ActionController::Base
     request.env['omniauth.origin'] || user_path(current_user)
   end
 
-  def set_post
-    @post = Post.find(params[:post_id])
-  end
-
-  def find_post
-    @post = Post.find(params[:id])
-  end
-
   protected
 
   def configure_permitted_parameters

@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  # before_action :set_post, only: [:create, :destroy]
 
   def new
     @comment = Comment.new

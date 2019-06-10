@@ -1,9 +1,7 @@
 class LikesController < ApplicationController
-  before_action :set_post, only: [:create]
-  before_action :find_post, only: [:destroy]
-
 
   def create
+    @post = Post.find(params[:post_id])
     @like = @post.likes.build(user_id: current_user.id)
     if @like.save
       flash[:success] = 'You\'ve liked this post'
