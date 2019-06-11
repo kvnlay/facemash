@@ -1,0 +1,14 @@
+<% if current_user.sent_requests.pluck(:requested_id).include? user.id %>
+  <p><%= link_to user.name, user_path(user) %></p>
+  <%= button_tag 'Request pending', class: 'btn btn-warning btn-sm', disabled: true %>
+<%elsif current_user.received_requests.pluck(:requester_id).include? user.id %>
+  <p><%= link_to user.name, user_path(user) %></p>
+  <%= button_to 'Accept request', friendships_path(friend_id: user.id), method: :post, class: "btn btn-success btn-sm" %>
+<%elsif current_user.friends.pluck(:id).include? user.id %>
+  <p><%= link_to user.name, user_path(user) %> 
+  <%= button_to "Unfriend", friendship_path(get_friendship(user).id), method: :delete, class: 'btn btn-danger btn-sm'%>
+<% else %>
+  <p><%= link_to user.name, user_path(user) %> 
+  <%= button_to "Add friend", friend_requests_path(requested_id: user.id), method: :post, class: 'btn btn-primary btn-sm'%>
+  </p>   
+<% end %>
