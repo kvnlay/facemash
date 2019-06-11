@@ -1,7 +1,8 @@
-<%= form_for([@post]) do |f| %>
+<%= form_for @post do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :body, placeholder: "What's on your mind?..." %>
+    <%= f.label :body, "Your post here", class: "hidden" %>
+    <%= f.text_area :body, placeholder: "What's on your mind #{current_user.name}?..." %>
   </div>
   <%= f.submit "post", class: "btn btn-primary" %>
 <% end %>
