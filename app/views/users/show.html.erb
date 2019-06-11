@@ -52,8 +52,13 @@
 			</div>
 		</div>
 		<div class="col-md-9">
+			<% if @user == current_user %>
+				<div class="post-form">
+				<%= render partial: 'shared/post_form' %>
+				</div>
+			<% end %>
       <div class="profile-content flex_display content-center">
-        <%= render partial: 'shared/feed', locals: { width: '80%' } %>
+        <%= render partial: 'shared/feed' %>
       </div>
 		</div>
 	</div>
