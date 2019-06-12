@@ -34,6 +34,7 @@ RSpec.feature "UsersShows", type: :feature do
     login_as(@user)
     visit user_path(@friend)
     expect(page).to have_text("There are no posts")
+    expect(page).to_not have_button('create post')
     expect(page).to have_content("#{@friend.name}")
     expect(page).to have_content("#{@friend.email}")
     expect(page).to have_link('Overview')
@@ -45,6 +46,7 @@ RSpec.feature "UsersShows", type: :feature do
     visit user_path(@requester)
     expect(page).to have_content("#{@requester.name}")
     expect(page).to have_content("#{@requester.email}")
+    expect(page).to_not have_button('create post')
     expect(page).to have_link('Overview')
     expect(page).to have_button('Accept request')
     expect(page).to have_button('Decline request')
@@ -56,6 +58,7 @@ RSpec.feature "UsersShows", type: :feature do
     expect(page).to have_text("There are no posts")
     expect(page).to have_content("#{@random.name}")
     expect(page).to have_content("#{@random.email}")
+    expect(page).to_not have_button('create post')
     expect(page).to have_link('Overview')
     expect(page).to have_button('Add friend')
   end
