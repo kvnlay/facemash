@@ -158,6 +158,10 @@ h1, h2, h3, h4, h5, h6 {
   width: 10%;
 }
 
+.btn-light {
+  border: 1px solid #e8e8e8;
+}
+
 /* miscellaneous */
 
 .debug_dump {
@@ -317,8 +321,7 @@ span.picture {
 }
 
 .post-form{
-  position: relative;
-  top: 70px;
+  margin-top: 40px;
 }
 
 .space-evenly{

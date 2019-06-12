@@ -18,7 +18,7 @@
 
     <div class="like_comment flex_display">
     <% if @post.likes.find_by(user: current_user) %>
-        <%= button_to "Unlike", like_path(@post.id), :method => :delete, class: "btn btn-secondary like" %>
+        <%= button_to "Unlike", like_path(@post.id), :method => :delete, class: "btn btn-light like" %>
     <% else %>
         <%= button_to "Like", post_likes_path(:post_id => @post.id), :method => :post, class: "btn btn-primary like" %>
     <% end %>
