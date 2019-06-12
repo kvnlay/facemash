@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     if @like.save
       flash[:success] = 'You\'ve liked this post'
     else
-      flash.now[:error] = 'You cannot like this post'
+      flash[:error] = 'You cannot like this post'
     end
     redirect_back(fallback_location: root_path)
   end

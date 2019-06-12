@@ -6,7 +6,7 @@
         <p class="name"><%= link_to @post.user.name, @post.user %><span class="body"><%= comment.content %></span><p>
 
         <div class="date_del flex_display">
-        <span class="date"><%= comment.created_at %></span>
+        <span class="date date-comment"><%= comment.created_at %></span>
         <% if comment.user == current_user %>
           <%= button_to "delete", comment_path(comment.id), :method => :delete, :class=>'btn btn-danger del' %>
         <% end %>

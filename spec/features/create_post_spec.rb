@@ -17,7 +17,7 @@ RSpec.feature "CreatePosts", type: :feature do
     # click_on 'Timeline'
 
     fill_in 'Your post here', with: 'something'
-    click_button 'post'
+    click_button 'create post'
     expect(page).to have_content('something')
     assert_current_path posts_path
   end

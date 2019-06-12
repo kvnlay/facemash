@@ -3,7 +3,7 @@
     <% @posts.each do |post| %>
       <li>
         <%= gravatar_for post.user, size: 50 %>
-        <p class="name"><%= link_to post.user.name, post.user %><p>
+        <p class="name"><%= link_to post.user.name, post.user %></p>
 
         <div class="date_del flex_display">
         <span class="date"><%= post.created_at %></span>
@@ -39,4 +39,6 @@
       </li>
     <% end %>
   </ol>
+<% else %>
+  <h3 class="center-txt"><em>There are no posts</em></h3>
 <% end %>

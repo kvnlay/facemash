@@ -251,6 +251,7 @@ input {
 .posts {
   list-style: none;
   padding: 0;
+  width: 90%;
   li {
     padding: 10px 0 0 0;
     border-top: 1px solid #e8e8e8;
@@ -307,6 +308,19 @@ span.picture {
     margin-left: 10px;
     font-weight: lighter;
   }
-  .date {
+  .date-comment {
     margin-left: 40px;
   }
+// post partial
+.posts-head{
+  margin-left: 50px;
+}
+
+.post-form{
+  position: relative;
+  top: 70px;
+}
+
+.space-evenly{
+  justify-content: space-evenly;
+}

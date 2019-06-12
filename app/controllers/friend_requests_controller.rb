@@ -17,7 +17,7 @@ class FriendRequestsController < ApplicationController
 
   def destroy
     @friend_request = FriendRequest.find(params[:id])
-    flash[:notice] = @friend_request.destroy ? "Request declined" : "Request couldn't be declined"
+    flash[:alert] = @friend_request.destroy ? "Request declined" : "Request couldn't be declined"
     redirect_back(fallback_location: friend_requests_path)
   end
 end

@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     if @post.save
       flash[:success] = 'Post created!'
     else
-      flash.now[:alert] = 'Post not created!'
+      flash[:alert] = 'Post not created!'
     end
     redirect_back(fallback_location: root_path)
   end

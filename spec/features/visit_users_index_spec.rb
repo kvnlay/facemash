@@ -25,6 +25,6 @@ RSpec.feature "VisitUsersIndices", type: :feature do
     expect(page).to have_button('Request pending', disabled: true)
     expect(page).to have_button('Accept request')
     expect(page).to have_button("Add friend")
-    # expect(page).to have_button('Unfriend')
+    expect(page).to have_button('Unfriend')
   end
 end
