@@ -20,7 +20,7 @@
             <a class="navbar-brand" href="#">Facemash</a>
           </div>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'Home', root_path %></li>
+            <li><%= link_to 'Home', posts_path %></li>
             <li><%= link_to 'Profile', current_user %></li>
             <li><%= link_to "Notifications(#{request_count})", friend_requests_path %></li>
             <li><%= link_to 'Find friends', users_path %></li>

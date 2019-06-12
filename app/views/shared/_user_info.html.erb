@@ -1,4 +1,8 @@
+<section class="col-md-3 pd">
 <%= link_to gravatar_for(current_user, size: 50), current_user %>
+</section>
+<section class="col-md-9 pd">
 <h1><%= current_user.name %></h1>
 <p><%= link_to "view my profile", current_user %></p>
 <p><%= pluralize(current_user.posts.count, "post") %></p>
+</section>
