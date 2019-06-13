@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  authenticated :user do
+    root to: 'posts#index', as: :authenticated_root
+  end
   root to: 'welcome#index'
   resources :friendships, only: [:create, :destroy]
   resources :friend_requests, only: [:index, :create, :destroy]
