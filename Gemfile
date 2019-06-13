@@ -66,8 +66,8 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'webdrivers', '~> 3.0'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'shoulda'
-  gem 'shoulda-matchers'
+  gem 'shoulda', '~> 3.5'
+  gem 'shoulda-matchers', '~> 2.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
