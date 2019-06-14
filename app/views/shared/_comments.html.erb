@@ -1,0 +1,17 @@
+<% if @post.comments.any? %>
+  <ol class="posts comments">
+    <% @post.comments.each do |comment| %>
+      <li>
+        <%= gravatar_for comment.user, size: 50 %>
+        <p class="name"><%= link_to comment.user.name, comment.user %><span class="body"><%= comment.content %></span><p>
+
+        <div class="date_del flex_display">
+        <span class="date date-comment"><%= comment.created_at %></span>
+        <% if comment.user == current_user %>
+          <%= button_to "delete", comment_path(comment.id), :method => :delete, :class=>'btn btn-danger del' %>
+        <% end %>
+        </div><br>
+      </li>
+    <% end %>
+  </ol>
+<% end %>

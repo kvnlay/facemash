@@ -11,29 +11,29 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    # @comment = Comment.new(post_id: params[:post_id])
   end
 
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = 'Post created!'
-      redirect_to @post
     else
-      flash.now[:alert] = 'Post not created!'
-      render 'new'
+      flash[:alert] = 'Post not created!'
     end
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
     flash[:success] = 'Post deleted'
-    redirect_to root_url
+    redirect_to posts_path
   end
 
   private
 
   def post_params
-    params.require(:posts).permit(:body)
+    params.require(:post).permit(:body)
   end
 end

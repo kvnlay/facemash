@@ -6,16 +6,14 @@ ruby '2.6.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 gem 'faker'
-# Use sqlite3 as the database for Active Record
 gem 'pg'
 gem 'rails_12factor', group: :production
 gem 'dotenv-rails'
-<<<<<<< HEAD
-=======
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'rails-controller-testing'
->>>>>>> controllers
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'jquery-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -50,6 +48,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'capybara', '>= 2.15'
 end
 
 group :development do
@@ -65,10 +64,8 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  gem 'webdrivers', '~> 3.0'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
   gem 'shoulda', '~> 3.5'
   gem 'shoulda-matchers', '~> 2.0'
 end

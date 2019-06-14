@@ -6,10 +6,57 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   </head>
 
   <body>
-    <%= yield %>
+    <!-- top nav -->
+    <nav class="navbar navbar-facemash">
+      <% if user_signed_in? %>
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Facemash</a>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'Home', posts_path %></li>
+            <li><%= link_to 'Profile', current_user %></li>
+            <li><%= link_to "Notifications(#{request_count})", friend_requests_path %></li>
+            <li><%= link_to 'Find friends', users_path %></li>
+            <li><%= link_to 'Sign out', destroy_user_session_path, method: "delete" %></li>
+          </ul>
+        </div>
+      <% else %>
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Facemash</a>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <%= link_to new_user_session_path do %>
+                <span class="glyphicon glyphicon-user"></span> Login
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_registration_path do %>
+                <span class="glyphicon glyphicon-log-in"></span> Sign up
+              <% end %>
+            </li>
+            <li>
+              <%= link_to user_facebook_omniauth_authorize_path do %>
+                <span class="glyphicon glyphicon-log-in"></span> Signup with facebook
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    </nav>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="devise-alert alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>
