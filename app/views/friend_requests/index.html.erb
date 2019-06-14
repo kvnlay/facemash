@@ -1,0 +1,19 @@
+<h1>Friend requests</h1>
+<div class="container">
+  <div class="flex_display req">
+    <% if @incoming.empty? %>
+      <h3><em>No friend requests 😪</em></h3>
+    <% else %>
+      <% @incoming.each do |req| %>
+      <div class='media req-img'>
+        <%= gravatar_for req.requester %>
+      </div>
+      <p class="flex_display name-align"> <%= link_to "#{req.requester.name}", user_path(req.requester) %></p>
+      <div class="flex_display f-btns">
+        <%= button_to 'Accept request', friendships_path(friend_id: req.requester.id), method: :post, class: "btn btn-success btn-sm"%>
+        <%= button_to 'Decline request', friend_request_path(req), method: 'delete', class: "btn btn-danger btn-sm", form_class: "req-b"%>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

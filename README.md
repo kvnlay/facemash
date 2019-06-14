@@ -1,24 +1,46 @@
-# README
+# Facemash
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Facemash is a clone of some of the core features of facebook which includes; users, profiles, “friending”, posts, news feed, and “liking”. 
 
-Things you may want to cover:
+### [Live version](https://shrouded-refuge-15460.herokuapp.com)
 
-* Ruby version
+## Contributors
 
-* System dependencies
+[Musa Jabbaaru Ntege](https://github.com/Cena-JM)<br>
+[Kingsley Omotayo](https://github.com/kvnlay)
 
-* Configuration
+## Technologies
 
-* Database creation
+Ruby 2.6.0
+Postgresql 1.1.4
 
-* Database initialization
+## Framework
 
-* How to run the test suite
+Ruby on Rails 5.2.3
+Bootstrap
 
-* Services (job queues, cache servers, search engines, etc.)
+## Getting started
 
-* Deployment instructions
+To get started with the app, clone the repo
 
-* ...
+```
+$ git clone https://github.com/kvnlay/facemash
+```
+
+and then install the needed gems:
+```
+$ bundle install --without production
+```
+
+Next, migrate the database:
+
+```
+$ rails db:migrate
+```
+
+Finally, run the server and have fun:
+
+```
+$ rails server
+```
+

@@ -1,0 +1,39 @@
+// Place all the styles related to the Friends controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.in {
+  display: inline-block;
+}
+
+.f-btns{
+  align-items: center;
+}
+
+.req{
+  padding: 20px;
+  border-top: 1px solid #3b5998;
+  border-bottom: 1px solid #3b5998;
+}
+
+.name-align{
+  align-items: center;
+  margin-right: 20px;
+}
+
+.btn-req{
+  margin: 15px;
+}
+
+.req-img{
+  align-self: center;
+}
+
+.req-img img{
+  width: 50px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.req-b{
+  margin-left: 10px;
+}

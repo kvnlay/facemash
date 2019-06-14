@@ -1,0 +1,65 @@
+
+<div class="container-fluid">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<%= gravatar_for @user %>
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						<%= @user.name %>
+					</div>
+					<div class="profile-usertitle-job">
+						<%= @user.email %>
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+          <% if @user == current_user %>
+            <%= button_to 'Edit Profile', edit_user_registration_path, method: :get, class: 'btn btn-primary btn-sm'%>
+          <% else %>
+            <%= render partial: 'shared/user_buttons', locals: {user: @user} %>
+          <% end %>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+						<li class="active">
+							<a href="#">
+							<i class="glyphicon glyphicon-home"></i>
+							Overview </a>
+						</li>
+            <% if @user == current_user %>
+              <li>
+                <%= link_to glyph(:ok) + " My Feed", posts_path %>
+              </li>
+              <li>
+                <%= link_to glyph(:share) + " Notifications(#{request_count})", friend_requests_path %>
+              </li>
+              <li>
+                <%= link_to glyph(:user) + " Edit profile", edit_user_registration_path %>
+              </li>
+            <% end %>
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9">
+			<% if @user == current_user %>
+				<div class="post-form">
+				<%= render partial: 'shared/post_form' %>
+				</div>
+			<% end %>
+      <div class="profile-content flex_display content-center">
+        <%= render partial: 'shared/feed' %>
+      </div>
+		</div>
+	</div>
+</div>
