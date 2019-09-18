@@ -12,11 +12,13 @@ Facemash is a clone of some of the core features of facebook which includes; use
 ## Technologies
 
 Ruby 2.6.0
+
 Postgresql 1.1.4
 
 ## Framework
 
 Ruby on Rails 5.2.3
+
 Bootstrap
 
 ## Getting started
