@@ -56,6 +56,16 @@ bundle install --without production
 
 Using [Figaro](https://github.com/laserlemon/figaro):
 
+Add Figaro to your Gemfile and `bundle install`:
+
+This creates a commented `config/application.yml` file and adds it to your
+`.gitignore`. Add your own configuration to this file and you're done!
+
+```shell
+add Postgresql username and password to `config/application.yml` with the following variable names:
+username: POSTGRES_USER
+password: POSTGRES_PASSWORD
+```
 
 ### Initialize the database
 
