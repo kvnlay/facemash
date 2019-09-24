@@ -23,26 +23,49 @@ Bootstrap
 
 ## Getting started
 
-To get started with the app, clone the repo
+### Clone the repository
 
-```
+```shell
 $ git clone https://github.com/kvnlay/facemash
+cd facemash
 ```
 
-and then install the needed gems:
-```
-$ bundle install --without production
+### Check your Ruby version
+
+```shell
+ruby -v
 ```
 
-Next, migrate the database:
+The output should start with something like `ruby 2.6.0`
 
-```
-$ rails db:migrate
-```
+If not, install the right ruby version using [rbenv](https://github.com/rbenv/rbenv) (it could take a while):
 
-Finally, run the server and have fun:
-
-```
-$ rails server
+```shell
+rbenv install 2.6.0
 ```
 
+### Install dependencies
+
+Using [Bundler](https://github.com/bundler/bundler):
+
+```shell
+bundle install --without production
+```
+
+### Set environment variables
+
+Using [Figaro](https://github.com/laserlemon/figaro):
+
+
+### Initialize the database
+
+```shell
+rails db:create db:migrate db:seed
+```
+### Testing
+
+Simply run
+
+```ruby
+rspec
+```
