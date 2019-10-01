@@ -6,10 +6,20 @@ Facemash is a clone of some of the core features of facebook which includes; use
 
 ### [Live version](https://shrouded-refuge-15460.herokuapp.com)
 
-## Contributors
+## Features
+- Authentication:
+  * User signup and login with username and password.
+  * User can signup and login with Facebook Oauth
+- Manage User resources with basic functionalities:
+  * Users can send, accept, cancel and reject friend requests
+  * Users can unfriend other users
+  * Users can create, edit and delete posts and comment on posts.
+  * Editing and deleting comments.
+  * Liking and Unliking posts.
+- Flash messages responding to users' interaction with the app
+- Showing Like count
+- Responsive web design.
 
-[Musa Jabbaaru Ntege](https://github.com/Cena-JM)<br>
-[Kingsley Omotayo](https://github.com/kvnlay)
 
 ## Technologies
 
@@ -81,3 +91,8 @@ Simply run
 ```ruby
 rspec
 ```
+## Contributors
+
+[Musa Jabbaaru Ntege](https://github.com/Cena-JM)<br>
+[Kingsley Omotayo](https://github.com/kvnlay)
+
