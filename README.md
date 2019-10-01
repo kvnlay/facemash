@@ -2,6 +2,8 @@
 
 Facemash is a clone of some of the core features of facebook which includes; users, profiles, “friending”, posts, news feed, and “liking”. 
 
+![facemash2](https://user-images.githubusercontent.com/21004010/65952202-6fb65580-e439-11e9-9868-af236f1205fe.png)
+
 ### [Live version](https://shrouded-refuge-15460.herokuapp.com)
 
 ## Contributors
