@@ -6,43 +6,93 @@ Facemash is a clone of some of the core features of facebook which includes; use
 
 ### [Live version](https://shrouded-refuge-15460.herokuapp.com)
 
-## Contributors
+## Features
+- Authentication:
+  * User signup and login with username and password.
+  * User can signup and login with Facebook Oauth
+- Manage User resources with basic functionalities:
+  * Users can send, accept, cancel and reject friend requests
+  * Users can unfriend other users
+  * Users can create, edit and delete posts and comment on posts.
+  * Editing and deleting comments.
+  * Liking and Unliking posts.
+- Flash messages responding to users' interaction with the app
+- Showing Like count
+- Responsive web design.
 
-[Musa Jabbaaru Ntege](https://github.com/Cena-JM)<br>
-[Kingsley Omotayo](https://github.com/kvnlay)
 
 ## Technologies
 
 Ruby 2.6.0
+
 Postgresql 1.1.4
 
 ## Framework
 
 Ruby on Rails 5.2.3
+
 Bootstrap
 
 ## Getting started
 
-To get started with the app, clone the repo
+### Clone the repository
 
-```
+```shell
 $ git clone https://github.com/kvnlay/facemash
+cd facemash
 ```
 
-and then install the needed gems:
-```
-$ bundle install --without production
+### Check your Ruby version
+
+```shell
+ruby -v
 ```
 
-Next, migrate the database:
+The output should start with something like `ruby 2.6.0`
 
-```
-$ rails db:migrate
+If not, install the right ruby version using [rbenv](https://github.com/rbenv/rbenv) (it could take a while):
+
+```shell
+rbenv install 2.6.0
 ```
 
-Finally, run the server and have fun:
+### Install dependencies
 
+Using [Bundler](https://github.com/bundler/bundler):
+
+```shell
+bundle install --without production
 ```
-$ rails server
+
+### Set environment variables
+
+Using [Figaro](https://github.com/laserlemon/figaro):
+
+Add Figaro to your Gemfile and `bundle install`:
+
+This creates a commented `config/application.yml` file and adds it to your
+`.gitignore`. Add your own configuration to this file and you're done!
+
+```shell
+add Postgresql username and password to `config/application.yml` with the following variable names:
+username: POSTGRES_USER
+password: POSTGRES_PASSWORD
 ```
+
+### Initialize the database
+
+```shell
+rails db:create db:migrate db:seed
+```
+### Testing
+
+Simply run
+
+```ruby
+rspec
+```
+## Contributors
+
+[Musa Jabbaaru Ntege](https://github.com/Cena-JM)<br>
+[Kingsley Omotayo](https://github.com/kvnlay)
 
