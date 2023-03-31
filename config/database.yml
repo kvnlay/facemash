@@ -14,4 +14,7 @@ test:
   database: <%= ENV['POSTGRES_TEST_DB'] %>
 production:
   <<: *default
-  database: <%= ENV['POSTGRES_DB'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  database: facemash_ybnj
+  username: facemash_ybnj_user
+  password: <%= ENV['DB_PASSWORD'] %>
